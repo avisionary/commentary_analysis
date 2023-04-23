@@ -1,0 +1,29 @@
+conda env update --file local.yml --prunename: anly521
+channels:
+  - apple
+  - conda-forge
+dependencies:
+  - datasets
+  - jupyterlab
+  - more-itertools
+  - nltk
+  - numpy
+  - pydantic
+  - pytorch
+  - pyyaml
+  - pip
+  - pytest
+  - python
+  - jupyter
+  - tqdm
+  - transformers
+  - spacy
+  - scipy
+  - scikit-learn
+  - pandas
+  - matplotlib
+  - regex
+  - seaborn
+  - pip:
+    - tensorflow-macos
+    - tensorflow-metal
