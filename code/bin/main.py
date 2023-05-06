@@ -30,5 +30,3 @@ if __name__ == "__main__":
         all_ft_comm, spacy_comm_joined, 'spacy')
     r_score_nltk = r_score.get_rouge_score(all_ft_comm, nltk_comm, 'nltk')
     r_score_t5 = r_score.get_rouge_score(all_ft_comm, t5_comm, 'T5')
-
-    # add code for plots

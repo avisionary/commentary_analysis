@@ -10,7 +10,7 @@ class Scrapper():
         Class for Scraping a Goal.com website for further analysis
     """
     def __init__(self,url,match):
-        self.match = self.match
+        self.match = match
         self.url = url
         self.log = []
 
