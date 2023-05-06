@@ -28,15 +28,12 @@ class T5Sum():
 
         return self.tokenizer.decode(summary_ids[0], skip_special_tokens=True)
 
-    def get_all_comm_t5(self, comms):
+    def get_all_comm_t5(self):
         all_comm_t5 = []
-        for commentary in comms:
+        for commentary in self.commentaries:
             t5_window_comm = []
             for comment in commentary:
                 summary = self.summarize_text_t5(comment)
                 t5_window_comm.append(summary)
             all_comm_t5.append(" ".join(t5_window_comm))
         return all_comm_t5
-
-    # goes into driver code
-    # t5_comm = get_all_comm_t5(spacy_comm)

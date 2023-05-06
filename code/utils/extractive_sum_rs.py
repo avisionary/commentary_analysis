@@ -1,4 +1,5 @@
-from utils import spacy_sum_rs, nltk_sum_rs
+from utils.spacy_sum_rs import SpacySum
+from utils.nltk_sum_rs import NltkSum
 
 import warnings
 warnings.filterwarnings('ignore')
@@ -9,10 +10,11 @@ class ExtractiveSum():
         self.commentaries = list_comms
 
     def get_spacy_sum(self):
-        spacy_comm = spacy_sum_rs.SpacySum().get_all_comm_spacy(self.commentaries)
-        spacy_comm_joined = []
-        for comms in spacy_comm:
-            spacy_comm_joined.append(" ".join(comms))
+        return SpacySum().get_all_comm_spacy(self.commentaries)
+        # spacy_comm_joined = []
+        # for comms in spacy_comm:
+        #     spacy_comm_joined.append(" ".join(comms))
+        # return spacy_comm
         
     def get_nltk_sum(self):
-        return nltk_sum_rs.NltkSum().get_all_comm_nltk(self.commentaries)
+        return NltkSum().get_all_comm_nltk(self.commentaries)
