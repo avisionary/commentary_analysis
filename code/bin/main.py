@@ -1,7 +1,7 @@
 import argparse
-from utils.sliding_window_rs import SlidingWindow
-from utils.extractive_sum_rs import ExtractiveSum
-from utils.abstractive_sum_rs import T5Sum
+from utils.sliding_window import SlidingWindow
+from utils.extractive_sum import ExtractiveSum
+from utils.abstractive_sum import T5Sum
 from utils.rouge_score import RougeScore
 
 if __name__ == "__main__":
@@ -22,8 +22,7 @@ if __name__ == "__main__":
 
     nltk_comm = extract_sum.get_nltk_sum()
 
-    abstract_sum = T5Sum(spacy_comm)
-    t5_comm = abstract_sum.get_all_comm_t5()
+    t5_comm = T5Sum(spacy_comm).get_all_comm_t5()
 
     r_score = RougeScore()
     r_score_spacy = r_score.get_rouge_score(

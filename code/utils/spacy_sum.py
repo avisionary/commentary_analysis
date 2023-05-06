@@ -12,7 +12,7 @@ class SpacySum():
     def __init__(self):
         self.pipe = spacy.load("en_core_web_sm")
 
-    def get_spacy_summary(self, text, pipe):
+    def get_spacy_summary(self, text):
         doc = self.pipe(text)
 
         keyword = []
