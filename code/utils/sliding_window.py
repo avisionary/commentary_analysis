@@ -5,14 +5,35 @@ import warnings
 warnings.filterwarnings('ignore')
 
 class SlidingWindow():
+    """
+    Class to perform sliding window analysis on a DataFrame containing match comments.
+    """
 
     def __init__(self, folder):
+        """
+        Initialize the SlidingWindow object.
+
+        Parameters:
+        - folder (str): Path to the data directory.
+        """
         self.folder = folder
         self.df = pd.read_csv(Path(folder))
         self.df = self.df[self.df['match_id'] != 95]
 
 
     def window_df(self, df, start_timer, end_timer):
+        """
+        Filter the DataFrame to include comments within a specific time window.
+
+        Parameters:
+        - df (pd.DataFrame): Input DataFrame containing match comments.
+        - start_timer (int): Start time of the time window.
+        - end_timer (int): End time of the time window.
+
+        Returns:
+        - str: Concatenated comments within the specified time window.
+        """
+
         # Convert time column to str
         df['time'] = df['time'].astype(str)
         comments = []
@@ -27,6 +48,12 @@ class SlidingWindow():
         return " ".join(comments)
 
     def create_window(self):
+        """
+        Create a sliding window of time-based comment segments for each match.
+
+        Returns:
+        - list: List of lists containing comments for each time window of each match.
+        """
         all_comm = []
         match_ids = self.df['match_id'].unique()
         for id in match_ids:
@@ -48,6 +75,12 @@ class SlidingWindow():
         return all_comm
 
     def get_full_match_summ(self):
+        """
+        Get the full match summaries for each match.
+
+        Returns:
+        - list: List of full match summaries.
+        """
         all_ft_comm = []
         match_ids = self.df['match_id'].unique()
         for id in match_ids:
