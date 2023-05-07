@@ -28,6 +28,7 @@ The following command line arguments are supported:
 The dataset used in this project is scraped from goal.com using web scraping tools such as Beautiful Soup and Requests. The data includes minute by minute live ticker for any match link from goal.com. The data is stored in a csv file.
 
 ## Directory Structure
+```bash
 .
 ├── LICENSE
 ├── README.md
@@ -81,7 +82,7 @@ The dataset used in this project is scraped from goal.com using web scraping too
 │       └── temp.rtf
 ├── pytest.ini
 └── setup.py
-
+```
 
 
 
