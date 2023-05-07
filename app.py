@@ -1,11 +1,8 @@
 # importing libraries
 import streamlit as st
 import pandas as pd
-import joblib
 import altair as alt
 import numpy as np
-import gzip
-#import brotli
 from unidecode import unidecode
 from requests import get
 from bs4 import BeautifulSoup
@@ -14,7 +11,6 @@ import pandas as pd
 import numpy as np
 import numpy as np
 import matplotlib.pyplot as plt
-import time
 import re
 import string
 from code.utils.stoc import stoc

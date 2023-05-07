@@ -1,4 +1,5 @@
 pandas
+numpy
 streamlit
 joblib
 scikit-learn==1.0.2
@@ -8,3 +9,5 @@ lightgbm
 xgboost==1.5.0
 plotly
 altair
+unidecode
+nltk
