@@ -32,7 +32,7 @@ The following command line arguments are supported:
 - `--output_path`: The path to the where the scraped data will be stored (Required and should be in double quotes and end with .csv).
 - `--scrape`: A flag to indicate whether the data should be scraped (1) or not (0). Disclaimer: It takes time to run this model and hence not advised. (Required)
 - `--t5`: A flag to indicate whether Abstractive Summaries should be returned (1) or not (0). Disclaimer: It takes time to run this model and hence not advised. (Required)
-- `--plot`: A flag to indicate whether Rouge scores of the models should be plotted (1) or not (0). (Required)
+- `--eval_plot`: A flag to indicate whether Rouge scores of the models should be plotted (1) or not (0). (Required)
 
 ## Data Description
 The dataset used in this project is scraped from goal.com using web scraping tools such as Beautiful Soup and Requests. The data includes minute by minute live ticker for any match link from goal.com. The data is stored in a csv file.
