@@ -18,24 +18,24 @@ class CleanText():
         character_replace = ",()0123456789.?!@#$%&;*:_,/" 
         self.pattern = "[" + character_replace + "]"
 
-    def remove_punct(text):
+    def remove_punct(self, text):
         """ A method to remove punctuations from text """
         text  = "".join([char for char in text if char not in string.punctuation])
         return re.sub('[0-9]+', '', text) #removes numbers from text
     
-    def tokenization(text):
+    def tokenization(self, text):
         """ A method to tokenize text data """
         return re.split('\W+', text) #splitting each sentence/ tweet into its individual words
 
     def remove_stopwords(self, text):
         """ A method to remove all the stopwords """
-        return [word for word in text if word not in self.stopwords]
+        return [word for word in text if word not in self.stop_words]
 
-    def stemming(text):
+    def stemming(self, text):
         """ A method to perform stemming on text data"""
         return [nltk.PorterStemmer().stem(word) for word in text]
     
-    def lemmatizer(text):
+    def lemmatizer(self, text):
         return [nltk.WordNetLemmatizer().lemmatize(word) for word in text]
 
     # Making a common cleaning function for every part below for code reproducability

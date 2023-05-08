@@ -9,15 +9,15 @@ class SlidingWindow():
     Class to perform sliding window analysis on a DataFrame containing match comments.
     """
 
-    def __init__(self, folder):
+    def __init__(self, df):
         """
         Initialize the SlidingWindow object.
 
         Parameters:
         - folder (str): Path to the data directory.
         """
-        self.folder = folder
-        self.df = pd.read_csv(Path(folder))
+        self.df = df
+        # No commentary exists for match 95 on goal.com
         self.df = self.df[self.df['match_id'] != 95]
 
 

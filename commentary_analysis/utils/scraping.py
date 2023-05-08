@@ -9,10 +9,10 @@ class Scrapper():
     """
         Class for Scraping a Goal.com website for further analysis
     """
-    def __init__(self,url,match):
+    def __init__(self,url,match,log):
         self.match = match
         self.url = url
-        self.log = []
+        self.log = log
 
     def __str__(self) -> str:
         return f"Scraping for {self.match} from {self.url}"

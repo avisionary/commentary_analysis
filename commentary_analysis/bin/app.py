@@ -9,11 +9,10 @@ from bs4 import BeautifulSoup
 import regex as re
 import pandas as pd
 import numpy as np
-import numpy as np
 import matplotlib.pyplot as plt
 import re
 import string
-from code.utils.stoc import stoc
+from utils.stoc import stoc
 import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize, sent_tokenize
@@ -254,7 +253,7 @@ def plot_form(str_form1,str_form2):
 
     
 
-    img = plt.imread("figures/images/pitch.jpeg")
+    img = plt.imread("../figures/images/pitch.jpeg")
 
     plt.xlim(0, 200)
     plt.ylim(0, 100)

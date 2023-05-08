@@ -5,7 +5,7 @@ import datetime
 import regex as re
 import pandas as pd
 from unidecode import unidecode
-from code.utils.scraping import Scrapper
+from utils.scraping import Scrapper
 
 class MulitScraping():
     """
@@ -35,13 +35,15 @@ class MulitScraping():
             Method to scrape data from the given match links and store in a dataframe.
         """
         counter = 0 # initialize counter to keep track of number of matches scraped
-
-        for idx,row in self.links_path.iterrows():
+        link_data = pd.read_csv(self.links_path )
+        self.log = []
+        for idx,row in link_data.iterrows():
             match = row['match'] # get the name of the match
             url = row['live_ticker'] # get the link to the match live ticker
 
             # scrape the data using the Scrapper class
-            temp = Scrapper.scrap(url,match,Scrapper.log)
+            temp_object = Scrapper(url,match,self.log)
+            temp = temp_object.scrap()
 
             if temp[1] == 1:
                 counter += 1 # increment counter
@@ -69,7 +71,7 @@ class MulitScraping():
         """
             Method to print the logs generated during scraping.
         """
-        print(Scrapper.log)
+        print(self.log)
 
 
     def __save_data(self,data):

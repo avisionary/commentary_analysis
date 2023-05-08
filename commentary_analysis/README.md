@@ -21,8 +21,8 @@ This is a project that focuses on summarizing soccer matches using data scraped 
 
     Remember that scraping and running Abstractive Summaries take a lot of time since it used T5 model to summarize each match.
 
-7. To use the User Interface navigate to the main repository directory and run:
-            `streamlit run app.py`
+7. To use the User Interface run:
+            `streamlit run bin/app.py`
     
     You can enter any "goal.com" links and get the formation and summary of that match.
 
@@ -42,40 +42,77 @@ The dataset used in this project is scraped from goal.com using web scraping too
 .
 ├── LICENSE
 ├── README.md
-├── __init__.py
-├── app.py
-├── code
+├── commentary_analysis
 │   ├── Formation_Analysis.ipynb
-│   ├── __init__.py
+│   ├── README.md
 │   ├── bin
 │   │   ├── __init__.py
 │   │   ├── app.py
 │   │   └── main.py
+│   ├── comm_env.yml
+│   ├── commentary_analysis.egg-info
+│   │   ├── PKG-INFO
+│   │   ├── SOURCES.txt
+│   │   ├── dependency_links.txt
+│   │   └── top_level.txt
+│   ├── jupyter_files
+│   │   ├── cl_data_modelling_rs.ipynb
+│   │   ├── eda.ipynb
+│   │   ├── formation_analysis_aa.ipynb
+│   │   ├── multiple_scraping.ipynb
+│   │   ├── munging.ipynb
+│   │   ├── munging_aa.ipynb
+│   │   ├── scraping_check_aa.ipynb
+│   │   ├── summary_abstractive_rs.ipynb
+│   │   ├── summary_extractive_rs.ipynb
+│   │   └── summary_rs_sliding_window.ipynb
 │   ├── model_test.ipynb
+│   ├── pytest.ini
+│   ├── setup.py
 │   ├── tests
 │   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-39.pyc
+│   │   │   └── test_code.cpython-39-pytest-7.2.1.pyc
 │   │   ├── data
-│   │   │   └── temp.rtf
+│   │   │   ├── test_match.csv
+│   │   │   └── test_url.txt
 │   │   └── test_code.py
 │   └── utils
 │       ├── __init__.py
+│       ├── __pycache__
+│       │   ├── __init__.cpython-39.pyc
+│       │   ├── abstractive_sum.cpython-39.pyc
+│       │   ├── clean_data.cpython-39.pyc
+│       │   ├── collect_data.cpython-39.pyc
+│       │   ├── extractive_sum.cpython-39.pyc
+│       │   ├── munging.cpython-39.pyc
+│       │   ├── nltk_sum.cpython-39.pyc
+│       │   ├── plot_rouge.cpython-39.pyc
+│       │   ├── rouge_score.cpython-39.pyc
+│       │   ├── scraping.cpython-39.pyc
+│       │   ├── sliding_window.cpython-39.pyc
+│       │   ├── spacy_sum.cpython-39.pyc
+│       │   └── stoc.cpython-39.pyc
 │       ├── abstractive_sum.py
 │       ├── clean_data.py
 │       ├── collect_data.py
+│       ├── eda.py
 │       ├── extractive_sum.py
-│       ├── formation_analysis_aa.ipynb
-│       ├── multiple_scraping.ipynb
-│       ├── munging_aa.ipynb
+│       ├── munging.py
 │       ├── nltk_sum.py
+│       ├── plot_formations.py
+│       ├── plot_rouge.py
 │       ├── rouge_score.py
 │       ├── scraping.py
-│       ├── scraping_check_aa.ipynb
 │       ├── sliding_window.py
-│       └── spacy_sum.py
+│       ├── spacy_sum.py
+│       └── stoc.py
 ├── data
 │   ├── cl_data_21_22 _stage_leg.csv
 │   ├── cl_data_21_22.csv
 │   ├── cl_match_links_21_22.csv
+│   ├── commentary_new.csv
 │   ├── commentory.csv
 │   ├── commentory_matchid.csv
 │   ├── formation_subs.csv
@@ -83,15 +120,15 @@ The dataset used in this project is scraped from goal.com using web scraping too
 │   ├── key_events2.csv
 │   ├── temp.rtf
 │   └── temp_data.csv
-├── environment.yml
 ├── figures
 │   ├── images
 │   │   ├── pitch.jpeg
 │   │   └── temp.rtf
 │   └── plots
+│       ├── fig_lcs.html
+│       ├── fig_uni.html
 │       └── temp.rtf
-├── pytest.ini
-└── setup.py
+└── requirements.txt
 ```
 
 

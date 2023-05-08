@@ -6,22 +6,44 @@ import spacy
 
 class SoccerEventExtractor:
     
-    def __init__(self):
+    def __init__(self, df):
+        """
+        Initializes the class and loads the Spacy English language model.
+        """
         self.nlp = spacy.load("en_core_web_sm")
+        self.df = df
+        
 
-    def _clean_text(self, text):
-        text = text.lower().strip()
-        return text
+    def _generate_match_ids(self):
+        """
+        Generates unique match IDs for each row in the input DataFrame.
 
-    def _generate_match_ids(self, df):
-        df_unique = pd.DataFrame(df["match"].unique())
+        Args:
+        - df: pandas.DataFrame
+
+        Returns:
+        - df: pandas.DataFrame
+        """
+        self.df['comment'] = self.df['comment'].apply(lambda x: x.lower())
+        self.df['home_team'] = self.df['home_team'].apply(lambda x: x.lower())
+        self.df['away_team'] = self.df['away_team'].apply(lambda x: x.lower())
+        df_unique = pd.DataFrame(self.df["match"].unique())
         df_unique.reset_index(inplace=True)
         df_unique.columns = ["match_id", "match"]
-        df = pd.merge(df, df_unique, on="match")
-        return df
+        return pd.merge(self.df, df_unique, on="match")
 
     # Named Entity Recognition
     def _extract_entities(self, text):
+        """
+        Extracts named entities from the input text using Spacy's named entity recognition model.
+
+        Args:
+        - text: str
+
+        Returns:
+        - entities: list of tuples
+            Each tuple contains information about a named entity: (entity_text, start_char, end_char, label)
+        """
         doc = self.nlp(text)
         entities = []
         for ent in doc.ents:
@@ -29,6 +51,17 @@ class SoccerEventExtractor:
         return entities
 
     def _extract_event(self, comment):
+        """
+        Extracts information about a soccer event (e.g. goal, substitution, card) from the input comment.
+
+        Args:
+        - comment: str
+
+        Returns:
+        - result: list
+            A list of strings representing the extracted event information (e.g. player name, card type, team name).
+            If no event is detected, an empty list is returned.
+        """
         # Define regex patterns
         player_pattern = r"\b[A-Z][a-z]+\b"
         card_pattern = r"(yellow|red)\s+card"
@@ -76,6 +109,15 @@ class SoccerEventExtractor:
         return result
 
     def _input_event(self, df):
+        """
+        Extracts events such as goals, substitutions and cards from comments and adds them to the DataFrame.
+
+        Args:
+            df (pandas.DataFrame): The DataFrame containing the comments.
+
+        Returns:
+            pandas.DataFrame: The DataFrame with the extracted events added as columns.
+        """
         df["event"] = df["comment"].apply(self._extract_event)
         df["event_player"] = df["event"].apply(lambda x: x[0] if len(x) > 0 else "")
         df["card_type"] = df["event"].apply(lambda x: x[1] if len(x) > 0 else "")
@@ -84,6 +126,15 @@ class SoccerEventExtractor:
 
     # Extraction Soccer Formations of Home and Away Team
     def _extract_formation(self, df):
+        """
+        Extracts the formations of the home and away teams from the comments.
+
+        Args:
+            df (pandas.DataFrame): The DataFrame containing the comments.
+
+        Returns:
+            tuple: A tuple containing the home and away formations.
+        """
         text = " ".join(df["comment"].values)
         pattern = r"\(\d-\d-\d-\d\)|\(\d-\d-\d\)"
         away_formation = re.findall(pattern, text)[0].replace("(", "").replace(")", "")

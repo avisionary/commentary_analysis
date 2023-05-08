@@ -27,3 +27,4 @@ dependencies:
   - pip:
     - tensorflow-macos
     - tensorflow-metal
+    - SentencePiece

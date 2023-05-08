@@ -48,5 +48,5 @@ class SpacySum():
             spacy_window_comm = []
             for comment in commentary:
                 spacy_window_comm.append(self.get_spacy_summary(comment))
-                all_comm_spacy.append(spacy_window_comm)
+            all_comm_spacy.append(spacy_window_comm)
         return all_comm_spacy
