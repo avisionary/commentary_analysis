@@ -21,8 +21,8 @@ This is a project that focuses on summarizing soccer matches using data scraped 
 
     Remember that scraping and running Abstractive Summaries take a lot of time since it used T5 model to summarize each match.
 
-7. To use the User Interface navigate to the main repository directory and run:
-            `streamlit run app.py`
+7. To use the User Interface run:
+            `streamlit run bin/app.py`
     
     You can enter any "goal.com" links and get the formation and summary of that match.
 
